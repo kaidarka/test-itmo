@@ -1,0 +1,569 @@
+*
+  margin: 0
+  padding: 0
+
+//Основные стили
+body
+  font-family: 'Open Sans', sans-serif
+  font-weight: 600
+  color: #222222
+
+a, button, input, textarea
+  font-family: 'Open Sans', sans-serif
+  font-weight: 400
+
+a
+  color: #222222
+  text-decoration: transparent
+
+ul
+  list-style: none
+
+.btn
+  cursor: pointer
+  background: #F21F5B
+  border: none
+  color: #F7F9FE
+  padding: 8px 24px
+  border-radius: 50px
+  font-size: 16px
+  line-height: 32px
+  transition: all .5s
+  &:hover
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25)
+    transition: all .5s
+
+
+
+@font-face
+  font-family: 'Muller'
+  src: local('Muller Bold'), local('Muller-Bold'), url('./fonts/MullerBold.woff2') format('woff2'), url('./fonts/MullerBold.woff') format('woff'), url('./fonts/MullerBold.ttf') format('truetype')
+  font-weight: 700
+  font-style: normal
+
+h1, h2, h3
+  font-family: 'Muller', sans-serif
+  font-weight: 700
+
+//Шапка
+.header
+  background: linear-gradient(90deg, #3951E7 20.77%, #832AB9 91.64%)
+  height: 40px
+  width: 100%
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 0 40px
+  box-sizing: border-box
+  &__language
+    display: flex
+    align-items: center
+    cursor: pointer
+    & span
+      margin-right: 8px
+      font-size: 12px
+      font-weight: 600
+      color: white
+.nav
+  height: 86px
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding: 0 40px
+  &__logo
+    display: flex
+    align-items: center
+    & img
+      margin-right: 16px
+    & h2
+      margin-top: 5px
+      font-size: 28px
+      line-height: 28px
+  &__list
+    display: flex
+    align-items: center
+    & li
+      margin-right: 40px
+      &:last-child
+        margin-right: 0
+      & a
+        font-size: 16px
+        transition: all .3s
+        &:hover
+          text-decoration: underline
+          color: #832AB9
+  &-button
+    display: none
+
+@media (max-width: 1360px)
+  .nav
+    &__list
+      display: none
+    &-button
+      display: block
+      width: 35px
+      height: 26px
+      display: flex
+      align-items: center
+      justify-content: center
+      position: relative
+      & span
+        content: ''
+        width: 100%
+        height: 2px
+        background: #222222
+        transition: all .3s
+      &:before
+        content: ''
+        width: 100%
+        height: 2px
+        background: #222222
+        top: 0
+        display: block
+        position: absolute
+        transition: all .3s
+      &:after
+        content: ''
+        width: 100%
+        height: 2px
+        background: #222222
+        bottom: 0
+        display: block
+        position: absolute
+        transition: all .3s
+      &__active
+        & span
+          transform: scale(0)
+        &:before
+          transform: rotate(45deg)
+          top: 12px
+        &:after
+          transform: rotate(-45deg)
+          bottom: 12px
+
+@media (max-width: 450px)
+  .header
+    padding: 0 20px
+  .nav
+    padding: 0 20px
+
+
+//Мобильное меню
+.nav-mobile
+  display: none
+  &__active
+    display: block
+    position: absolute
+    top: 126px
+    left: 0
+    width: 100%
+    height: calc(100vh - 126px)
+    background: linear-gradient(90deg, #3951E7 20.77%, #832AB9 91.64%)
+    z-index: 11
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    align-items: center
+    & li
+      border-bottom: white 1px solid
+      & a
+        color: white
+        font-weight: bold
+        font-size: 28px
+
+@media (max-width: 650px)
+  .nav
+    &__logo h2
+      font-size: 18px
+    &-mobile__active li a
+      font-size: 16px
+
+
+//Баннер
+
+.banner
+  position: relative
+  height: 484px
+  display: flex
+  justify-content: center
+  align-items: center
+  padding: 0 20px
+  background-size: cover
+  background-repeat: no-repeat
+  background-position: center
+  &-item
+    opacity: 0
+    transform: scale(0)
+    transition: all .8s
+    color: white
+    &.active
+      opacity: 1
+      transform: scale(1)
+      transition: all .8s
+      width: 1216px
+    &__title
+      font-size: 56px
+      margin-bottom: 32px
+    &__text
+      font-size: 18px
+      max-width: 700px
+      line-height: 32px
+      color: #F7F9FE
+      margin-bottom: 24px
+
+.arrow
+  transition: transform .5s
+  &:hover
+    transform: scale(1.1)
+.prev-arrow
+  margin-right: 32px
+.next-arrow
+  margin-left: 32px
+
+@media (max-width: 650px)
+  .banner
+    height: 380px
+    &-item
+      margin-bottom: 50px
+      &__title
+        font-size: 30px
+        margin-bottom: 15px
+      &__text
+        font-size: 14px
+        line-height: 20px
+        margin-bottom: 15px
+  .arrow
+    position: absolute
+    bottom: 5px
+  .prev-arrow
+    left: 20px
+  .next-arrow
+    right: 20px
+
+//Новости
+
+.news
+  max-width: 1216px
+  margin: 40px auto
+  padding: 40px 20px 0 20px
+  &__title
+    margin-bottom: 40px
+    font-size: 40px
+    line-height: 40px
+  &-item
+    text-decoration: none
+    border-radius: 16px
+    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.16)
+    overflow: hidden
+    margin-bottom: 40px
+    &:hover
+      text-decoration: none
+      color: inherit
+    &__img
+      width: 100%
+      margin-bottom: 32px
+    &__text
+      ms-text-overflow: ellipsis
+      text-overflow: ellipsis
+      overflow: hidden
+      -ms-line-clamp: 5
+      -webkit-line-clamp: 5
+      line-clamp: 5
+      display: -webkit-box
+      display: -moz-box
+      word-wrap: break-word
+      -webkit-box-orient: vertical
+      box-orient: vertical
+      padding: 0 32px
+      margin-bottom: 32px
+      font-size: 16px
+      line-height: 24px
+      color: #222222
+      & a
+        color: #3951E7
+        &:hover
+          text-decoration: underline
+    &__block
+      display: flex
+      justify-content: space-between
+      padding: 0 33px
+      margin-bottom: 16px
+      & span
+        font-weight: 600
+        font-size: 12px
+        line-height: 16px
+        letter-spacing: -0.0002px
+        text-transform: uppercase
+        color: #6A6A6A
+      & img
+        width: 87px
+
+.newsLoading
+  height: 258.51px
+  width: 100%
+  content: ''
+  background: #6A6A6A
+
+@media (max-width: 650px)
+  .news
+    padding-top: 0px
+    margin-bottom: 0px
+    &__title
+      font-size: 30px
+      text-align: center
+
+
+\\Дисциплины
+.disciplines
+  max-width: 592px
+  margin: 0 auto 72px
+  padding: 0 20px
+  &__title
+    text-align: center
+    font-size: 40px
+    line-height: 40px
+    margin-bottom: 40px
+  &-list
+    cursor: pointer
+    &__item
+      margin-bottom: 8px
+      padding: 24px 32px
+      border: 1px solid #EAEFFC
+      border-radius: 8px
+      &-top
+        display: flex
+        justify-content: space-between
+      &-svg
+        transition: all .5s
+        &.active
+          transform: rotate(180deg)
+          & svg path
+            fill: #832AB9
+      &-text
+        margin-top: 16px
+        font-size: 14px
+        line-height: 24px
+        letter-spacing: 0.0016px
+        font-weight: 400
+
+@media (max-width: 650px)
+  .disciplines__title
+    font-size: 30px
+
+//Контакты
+.contacts
+  padding: 80px 20px
+  &-container
+    max-width: 1216px
+    margin: 0 auto
+    background-size: cover
+    background-position: right
+  &__block
+    max-width: 310px
+    background: #ffffff
+    border-radius: 8px
+    padding: 40px 70px
+    & h2
+      font-size: 40px
+      line-height: 40px
+      margin-bottom: 16px
+    & p
+      font-size: 16px
+      line-height: 22px
+      margin-bottom: 12px
+      font-weight: 400
+      & a
+        color: #3a58e7
+    & button
+      display: flex
+      align-items: center
+      & img
+        margin-right: 12px
+
+@media (max-width: 972px)
+  .contacts
+    padding: 20px 20px 150px 20px
+    &__block
+      margin: 0 auto
+@media (max-width: 650px)
+  .contacts
+    &__block
+      & h2
+        font-size: 30px
+
+@media (max-width: 650px)
+  .contacts
+    &__block
+      padding: 20px 40px
+
+//Футер
+
+.footer
+  &-nav
+    background: #232473
+    color: white
+    & a
+      color: white
+      font-size: 14px
+      font-weight: 400
+    & p
+      font-size: 13px
+      line-height: 24px
+      opacity: 0.5
+      font-weight: 400
+      max-width: 280px
+      letter-spacing: -0.507px
+    & h4
+      font-size: 13px
+      line-height: 18px
+      font-weight: 400
+      margin-top: 24px
+      margin-bottom: 8px
+    &__container
+      padding: 32px 20px 24px 20px
+      max-width: 1216px
+      margin: 0 auto
+    &__logo
+      margin-bottom: 24px
+      width: 100%
+      max-width: 300px
+    &__list
+      column-count: 2
+      & li
+        margin-bottom: 15px
+  &-social__icons a
+    margin-right: 8px
+    &:last-child
+      margin-right: 0
+
+.footer-pol
+  background: #1A1B57
+  padding: 10px 20px
+  &__container
+    max-width: 1216px
+    display: flex
+    justify-content: space-between
+    margin: 0 auto
+    & a
+      color: white
+      opacity: 0.5
+      font-size: 13px
+      line-height: 18px
+      font-weight: 400
+      letter-spacing: -0.507px
+
+@media (max-width: 720px)
+  .footer-pol__container
+    flex-direction: column
+    & a
+      margin-bottom: 10px
+      &:last-child
+        margin-bottom: 0
+
+@media (max-width: 430px)
+  .footer
+    &-nav
+      & p
+        font-size: 12px
+      & a
+        font-size: 12px
+      &__list li
+        margin-bottom: 10px
+
+//Модальное окно
+#overlay
+  position: fixed
+  display: flex
+  justify-content: center
+  align-items: center
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: rgba(35, 36, 115, 0.5)
+  z-index: 20
+.modal
+  background: white
+  max-width: 544px
+  max-height: 80vh
+  padding: 80px
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1)
+  border-radius: 16px
+  position: relative
+  text-align: center
+  overflow-y: auto
+  margin: 10px
+  & h1
+    font-size: 32px
+    line-height: 38px
+    color: black
+    margin-bottom: 40px
+  &-form
+    display: flex
+    flex-direction: column
+    text-align: left
+    &-red
+      border: 1px solid #e6185a!important
+    & label
+      font-weight: 600
+      font-size: 14px
+      line-height: 24px
+      margin-bottom: 8px
+      & span
+        color: #e6185a
+    & input
+      background: #FFFFFF
+      border: 1px solid #D4D6D7
+      box-sizing: border-box
+      border-radius: 2px
+      padding: 10px 15px
+      margin-bottom: 24px
+      &::placeholder
+        font-family: 'Open Sans', sans-serif
+        font-weight: 400
+        font-size: 14px
+        line-height: 19px
+    & textarea
+      background: #FFFFFF
+      border: 1px solid #D4D6D7
+      box-sizing: border-box
+      border-radius: 2px
+      padding: 10px 15px
+      margin-bottom: 24px
+      resize: none
+      height: 96px
+      &::placeholder
+        font-family: 'Open Sans', sans-serif
+        font-weight: 400
+        font-size: 14px
+        line-height: 19px
+    & p
+      color: #222222
+      font-weight: 400
+      font-size: 14px
+      line-height: 19px
+      margin-bottom: 32px
+      & a
+        color: #3a58e7
+        &:hover
+          text-decoration: underline
+    & button
+      background: #3951E7
+      display: flex
+      align-items: center
+      max-width: 161px
+      margin: 0 auto
+      & img
+        margin-right: 12px
+
+#shape
+  position: absolute
+  right: 24px
+  top: 24px
+
+@media (max-width: 470px)
+  .modal
+    padding: 40px 20px
+    & h1
+      font-size: 25px
+      margin-bottom: 20px
